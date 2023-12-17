@@ -9,7 +9,7 @@ inputs:
   key:
     description: 'Dtrack KEY REST API'
     required: true
-    default: ${{ secret.DTKEY }}
+    default: ${{ secrets.DTKEY }}
 outputs:
   riskscore:
     description: 'Vulnerabilities INFO'
