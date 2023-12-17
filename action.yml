@@ -1,16 +1,21 @@
 # action.yml
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'DependencyTrack check SBOM'
+description: 'Creating SBOM and upload to DependencyTrack'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  url:
+    description: 'Dtrack URL REST API'
     required: true
-    default: 'World'
+    default: 'http://localhost:8080/'
+  key:
+    description: 'Dtrack KEY REST API'
+    required: true
+    default: ${{ secret.DTKEY }}
 outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+  riskscore:
+    description: 'Vulnerabilities INFO'
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.who-to-greet }}
+    - ${{ inputs.url }}
+    - ${{ inputs.key }}
