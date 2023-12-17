@@ -10,7 +10,7 @@ if [ ! $? = 0 ]; then
     exit 1
 fi
 apt-get install --no-install-recommends -y build-essential default-jdk gradle
-path="build/reports/bom.json"
+path="bom.json"
 BoMResult=$(gradle build)
 
 echo "[*] BoM file succesfully generated"
