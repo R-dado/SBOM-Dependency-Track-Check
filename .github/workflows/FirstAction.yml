@@ -1,0 +1,17 @@
+name: CI
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2 
+      
+      - name: Creating SBOM and upload to DependencyTrack
+        id: DTriskscore
+        uses:  R-dado/SBOM-Dependency-Track-Check@main
+        with:
+          url: 'http://localhost:8080/'
+          key: '${{ secrets.DTKEY }}'
+
+      - name: Riskscore output
+        run: echo "Dependency Track's riskscore is ${{ steps.DTriskscore.outputs.riskscore }}"
