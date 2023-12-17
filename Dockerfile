@@ -15,4 +15,4 @@ RUN chmod +x /usr/bin/cyclonedx-cli
 
 COPY entrypoint.sh /entrypoint.sh
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["sh","/entrypoint.sh"]
