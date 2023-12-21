@@ -1,6 +1,7 @@
 DT_URL=$1
 DT_KEY=$2
 
+
 INSECURE="--insecure"
 cd $GITHUB_WORKSPACE
 
