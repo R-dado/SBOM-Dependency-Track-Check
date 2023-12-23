@@ -9,6 +9,10 @@ RUN apt-get update \
     && curl -sS https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -o packages-microsoft-prod.deb \
     && dpkg -i packages-microsoft-prod.deb && rm packages-microsoft-prod.deb \
     && apt-get update
+
+RUN curl -s https://get.sdkman.io | bash
+RUN chmod a+x "$HOME/.sdkman/bin/sdkman-init.sh"
+RUN source "$HOME/.sdkman/bin/sdkman-init.sh"
     
 COPY cyclonedx-linux-x64 /usr/bin/cyclonedx-cli
 RUN chmod +x /usr/bin/cyclonedx-cli
