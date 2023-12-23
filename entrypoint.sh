@@ -10,7 +10,7 @@ if [ ! $? = 0 ]; then
     echo "[-] Error executing Java build. Stopping the action!"
     exit 1
 fi
-sdk install gradle 8.5
+
 path="build/reports/bom.xml"
 BoMResult=$(gradle build --stacktrace)
 
