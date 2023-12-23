@@ -11,13 +11,11 @@ if [ ! $? = 0 ]; then
     exit 1
 fi
 apt-get install --no-install-recommends -y build-essential default-jdk gradle
-path="bom.xml"
+path="build/reports/bom.xml"
 BoMResult=$(gradle build --stacktrace)
 
 echo "[*] BoM file succesfully generated"
-echo "[*] -----------------------start of LS-----------"
-ls
-echo "[*] -----------------------end of LS-----------"
+
 echo "[*] Cyclonedx CLI conversion"
 cyclonedx-cli convert --input-file $path --output-file sbom.xml --output-format json
 
