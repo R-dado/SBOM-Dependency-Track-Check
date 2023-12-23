@@ -6,7 +6,7 @@ INSECURE="--insecure"
 cd $GITHUB_WORKSPACE
 
 echo "[*] -------------------------------------------------"
-echo cat /github/workspace/local.properties
+cat /github/workspace/local.properties
 echo "[*] -------------------------------------------------"
 
 echo "[*]  Processing Java BoM"
