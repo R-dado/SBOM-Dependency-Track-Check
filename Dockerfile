@@ -21,7 +21,7 @@ RUN mkdir "$ANDROID_HOME" .android \
     && unzip sdk.zip \
     && rm sdk.zip
     
-RUN sdkmanager --sdk_root=${ANDROID_SDK_ROOT} --version
+RUN /opt/sdk/cmdline-tools/bin/sdkmanager --version
 
 RUN yes | sdkmanager --sdk_root=${ANDROID_SDK_ROOT} --licenses && \
     sdkmanager --sdk_root=${ANDROID_SDK_ROOT} --install "build-tools;${ANDROID_BUILD_TOOLS_VERSION}" \
