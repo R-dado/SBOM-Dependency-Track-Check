@@ -15,13 +15,12 @@ ENV ANDROID_SDK_ROOT "/opt/sdk"
 ENV ANDROID_HOME ${ANDROID_SDK_ROOT} 
 ENV ANDROID_BUILD_TOOLS_VERSION=33.0.2
 
-RUN mkdir "$ANDROID_HOME" .android \
-    && cd "$ANDROID_HOME" \
-    && curl -o sdk.zip $SDK_URL \
-    && unzip sdk.zip \
-    && rm sdk.zip
-    
-RUN /opt/sdk/cmdline-tools/bin/sdkmanager --version
+RUN wget -q $SDK_URL -O /tmp/tools.zip && \
+    mkdir -p ${ANDROID_SDK_ROOT}/cmdline-tools && \
+    unzip -qq /tmp/tools.zip -d ${ANDROID_SDK_ROOT}/cmdline-tools && \
+    mv ${ANDROID_SDK_ROOT}/cmdline-tools/* ${ANDROID_SDK_ROOT}/cmdline-tools/latest_supported && \
+    rm -v /tmp/tools.zip && \
+    mkdir -p ~/.android/ && touch ~/.android/repositories.cfg
 
 RUN yes | sdkmanager --sdk_root=${ANDROID_SDK_ROOT} --licenses && \
     sdkmanager --sdk_root=${ANDROID_SDK_ROOT} --install "build-tools;${ANDROID_BUILD_TOOLS_VERSION}" \
