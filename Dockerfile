@@ -10,7 +10,6 @@ RUN apt-get update \
     && dpkg -i packages-microsoft-prod.deb && rm packages-microsoft-prod.deb \
     && apt-get update
 
-RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
 RUN curl -s "https://get.sdkman.io" | bash
 RUN source "$HOME/.sdkman/bin/sdkman-init.sh"
