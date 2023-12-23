@@ -10,7 +10,7 @@ if [ ! $? = 0 ]; then
     echo "[-] Error executing Java build. Stopping the action!"
     exit 1
 fi
-ANDROID_HOME=/opt/gradle
+
 path="build/reports/bom.xml"
 BoMResult=$(gradle build --stacktrace)
 
