@@ -11,13 +11,13 @@ if [ ! $? = 0 ]; then
     exit 1
 fi
 apt-get install --no-install-recommends -y build-essential default-jdk gradle
-path="bom.json"
+path="bom.xml"
 BoMResult=$(gradle build)
 
 echo "[*] BoM file succesfully generated"
 
-# echo "[*] Cyclonedx CLI conversion"
-# cyclonedx-cli convert --input-file $path --output-file sbom.xml --output-format json_v1_2
+echo "[*] Cyclonedx CLI conversion"
+cyclonedx-cli convert --input-file $path --output-file sbom.xml --output-format json_v1_2
 
 echo "[*] Uploading BoM file to Dependency Track server"
 upload_bom=$(curl $INSECURE $VERBOSE -s --location --request POST $DT_URL/api/v1/bom \
