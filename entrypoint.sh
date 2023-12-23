@@ -12,7 +12,7 @@ if [ ! $? = 0 ]; then
 fi
 apt-get install --no-install-recommends -y build-essential default-jdk gradle
 path="bom.xml"
-BoMResult=$(gradle build)
+BoMResult=$(gradle build --stacktrace)
 
 echo "[*] BoM file succesfully generated"
 
