@@ -21,10 +21,10 @@ RUN mkdir "$ANDROID_HOME" .android \
     && unzip sdk.zip \
     && rm sdk.zip
     
-RUN $ANDROID_HOME/cmdline-tools/bin/sdkmanager --version
+RUN sdkmanager --sdk_root=${ANDROID_HOME} --version
 
-RUN yes | $ANDROID_HOME/cmdline-tools/bin/sdkmanager --licenses \
-    && $ANDROID_HOME/cmdline-tools/bin/sdkmanager "build-tools;${ANDROID_BUILD_TOOLS_VERSION}" \
+RUN yes | sdkmanager --sdk_root=${ANDROID_HOME} --licenses \
+    && sdkmanager --sdk_root=${ANDROID_HOME} "build-tools;${ANDROID_BUILD_TOOLS_VERSION}" \
     "platforms;android-${ANDROID_VERSION}" \
     "platform-tools"
     
