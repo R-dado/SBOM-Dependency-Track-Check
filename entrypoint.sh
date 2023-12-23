@@ -13,7 +13,9 @@ fi
 apt-get install --no-install-recommends -y build-essential default-jdk gradle
 path="build/reports/bom.xml"
 BoMResult=$(gradle build --stacktrace)
-
+echo "[*] -------------------------------------------------"
+gradle --version
+echo "[*] -------------------------------------------------"
 echo "[*] BoM file succesfully generated"
 
 echo "[*] Cyclonedx CLI conversion"
