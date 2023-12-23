@@ -10,10 +10,10 @@ RUN apt-get update \
     && dpkg -i packages-microsoft-prod.deb && rm packages-microsoft-prod.deb \
     && apt-get update
 
-ENV SDK_URL="https://dl.google.com/android/repository/commandlinetools-linux-10406996_latest.zip" \
-    ANDROID_HOME="/opt/sdk" \
-    ANDROID_VERSION=33 \
-    ANDROID_BUILD_TOOLS_VERSION=33.0.2
+ENV SDK_URL="https://dl.google.com/android/repository/commandlinetools-linux-10406996_latest.zip" 
+ENV ANDROID_SDK_ROOT "/opt/sdk" 
+ENV ANDROID_HOME ${ANDROID_SDK_ROOT} 
+ENV ANDROID_BUILD_TOOLS_VERSION=33.0.2
 
 RUN mkdir "$ANDROID_HOME" .android \
     && cd "$ANDROID_HOME" \
@@ -21,10 +21,10 @@ RUN mkdir "$ANDROID_HOME" .android \
     && unzip sdk.zip \
     && rm sdk.zip
     
-RUN sdkmanager --sdk_root=${ANDROID_HOME} --version
+RUN sdkmanager --sdk_root=${ANDROID_SDK_ROOT} --version
 
-RUN yes | sdkmanager --sdk_root=${ANDROID_HOME} --licenses \
-    && sdkmanager --sdk_root=${ANDROID_HOME} "build-tools;${ANDROID_BUILD_TOOLS_VERSION}" \
+RUN yes | sdkmanager --sdk_root=${ANDROID_SDK_ROOT} --licenses && \
+    sdkmanager --sdk_root=${ANDROID_SDK_ROOT} --install "build-tools;${ANDROID_BUILD_TOOLS_VERSION}" \
     "platforms;android-${ANDROID_VERSION}" \
     "platform-tools"
     
