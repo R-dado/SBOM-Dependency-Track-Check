@@ -22,7 +22,6 @@ RUN mkdir "$ANDROID_HOME" .android \
     && rm sdk.zip
     
     
-RUN $ANDROID_HOME/tools/bin/sdkmanager --update
 RUN RUN yes | sdkmanager --licenses \
     && $ANDROID_HOME/tools/bin/sdkmanager "build-tools;${ANDROID_BUILD_TOOLS_VERSION}" \
     "platforms;android-${ANDROID_VERSION}" \
