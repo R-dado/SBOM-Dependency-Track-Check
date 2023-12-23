@@ -1,4 +1,4 @@
-FROM gradle:8.5.0-jdk11-focal
+FROM gradle:8.5.0-jdk17-focal
 
 ENV DEBIAN_FRONTEND noninteractive
 
