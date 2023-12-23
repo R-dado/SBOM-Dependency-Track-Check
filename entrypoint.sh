@@ -10,7 +10,7 @@ if [ ! $? = 0 ]; then
     echo "[-] Error executing Java build. Stopping the action!"
     exit 1
 fi
-apt-get install --no-install-recommends -y build-essential default-jdk gradle
+apt-get install -y build-essential default-jdk gradle
 path="build/reports/bom.xml"
 BoMResult=$(gradle build --stacktrace)
 echo "[*] -------------------------------------------------"
