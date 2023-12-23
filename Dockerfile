@@ -22,6 +22,10 @@ RUN wget -q $SDK_URL -O /tmp/tools.zip && \
     rm -v /tmp/tools.zip && \
     mkdir -p ~/.android/ && touch ~/.android/repositories.cfg
 
+RUN cd /opt/sdk && ls /
+    cd /opt/sdk/cmdline-tools && ls /
+    cd /opt/sdk/cmdline-tools/latest-supported && ls
+
 RUN yes | sdkmanager --sdk_root=${ANDROID_SDK_ROOT} --licenses && \
     sdkmanager --sdk_root=${ANDROID_SDK_ROOT} --install "build-tools;${ANDROID_BUILD_TOOLS_VERSION}" \
     "platforms;android-${ANDROID_VERSION}" \
