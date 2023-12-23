@@ -5,7 +5,9 @@ DT_KEY=$2
 INSECURE="--insecure"
 cd $GITHUB_WORKSPACE
 
-export ANDROID_HOME=$HOME/Android/Sdk
+echo "[*] -------------------------------------------------"
+${ANDROID_HOME}/tools/bin/sdkmanager --list
+echo "[*] -------------------------------------------------"
 
 echo "[*]  Processing Java BoM"
 if [ ! $? = 0 ]; then
