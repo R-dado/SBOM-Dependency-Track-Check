@@ -15,7 +15,9 @@ path="bom.xml"
 BoMResult=$(gradle build --stacktrace)
 
 echo "[*] BoM file succesfully generated"
-
+echo "[*] -----------------------start of LS-----------"
+ls
+echo "[*] -----------------------end of LS-----------"
 echo "[*] Cyclonedx CLI conversion"
 cyclonedx-cli convert --input-file $path --output-file sbom.xml --output-format json
 
