@@ -5,9 +5,7 @@ DT_KEY=$2
 INSECURE="--insecure"
 cd $GITHUB_WORKSPACE
 
-echo "[*] -------------------------------------------------"
-cat /github/workspace/local.properties
-echo "[*] -------------------------------------------------"
+export ANDROID_HOME=$HOME/Android/Sdk
 
 echo "[*]  Processing Java BoM"
 if [ ! $? = 0 ]; then
