@@ -11,7 +11,7 @@ RUN apt-get update \
     && apt-get update
 
 ENV SDK_URL="https://dl.google.com/android/repository/commandlinetools-linux-10406996_latest.zip" \
-    ANDROID_HOME="/usr/local/android-sdk" \
+    ANDROID_HOME="/opt/sdk" \
     ANDROID_VERSION=33 \
     ANDROID_BUILD_TOOLS_VERSION=33.0.2
 
@@ -22,8 +22,8 @@ RUN mkdir "$ANDROID_HOME" .android \
     && rm sdk.zip
     
     
-RUN yes | sdkmanager --licenses \
-    && $ANDROID_HOME/tools/bin/sdkmanager "build-tools;${ANDROID_BUILD_TOOLS_VERSION}" \
+RUN yes | sdkmanager --sdk_root=${ANDROID_HOME} --licenses \
+    && sdkmanager --sdk_root=${ANDROID_HOME} "build-tools;${ANDROID_BUILD_TOOLS_VERSION}" \
     "platforms;android-${ANDROID_VERSION}" \
     "platform-tools"
     
