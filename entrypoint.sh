@@ -10,12 +10,15 @@ if [ ! $? = 0 ]; then
     echo "[-] Error executing Java build. Stopping the action!"
     exit 1
 fi
-apt-get install -y build-essential default-jdk gradle
+sdk install gradle 8.5
 path="build/reports/bom.xml"
 BoMResult=$(gradle build --stacktrace)
+
+
 echo "[*] -------------------------------------------------"
 gradle --version
 echo "[*] -------------------------------------------------"
+
 echo "[*] BoM file succesfully generated"
 
 echo "[*] Cyclonedx CLI conversion"
