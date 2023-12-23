@@ -11,7 +11,7 @@ jobs:
         uses:  R-dado/SBOM-Dependency-Track-Check@main
         with:
           url: 'http://46.188.8.14:23190/'
-          key: '${{ secrets.DTKEY }}'
+          key: '${{ secrets.DPKEY }}'
  
       - name: Riskscore output
         run: echo "Dependency Track's riskscore is ${{ steps.DTriskscore.outputs.riskscore }}"
