@@ -1,4 +1,4 @@
-FROM ubuntu:focal
+FROM gradle:8.5.0-jdk11-focal
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -10,11 +10,6 @@ RUN apt-get update \
     && dpkg -i packages-microsoft-prod.deb && rm packages-microsoft-prod.deb \
     && apt-get update
 
-
-RUN rm /bin/sh && ln -s /bin/bash /bin/sh
-RUN curl -s "https://get.sdkman.io" | bash
-RUN source "$HOME/.sdkman/bin/sdkman-init.sh"
-RUN sdk install gradle
     
 COPY cyclonedx-linux-x64 /usr/bin/cyclonedx-cli
 RUN chmod +x /usr/bin/cyclonedx-cli
