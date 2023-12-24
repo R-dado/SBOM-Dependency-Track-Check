@@ -17,23 +17,22 @@ path="bom.xml"
 echo "[*] ----------------BoMResult?---------------------------------"
 BoMResult=$(gradle build)
 echo "[*] ----------------BoMResult?---------------------------------"
-cd /github
+
+echo "[*] -------------------------------------------------"
+cd /github/workspace/home
 pwd
 ls
 echo "[*] -------------------------------------------------"
-cd /github/workspace
+cd
+cd /github/workspace/app
 pwd
 ls
 echo "[*] -------------------------------------------------"
-cd /app
+cd /github/workspace/app/src
 pwd
 ls
 echo "[*] -------------------------------------------------"
-cd /app/src
-pwd
-ls
-echo "[*] -------------------------------------------------"
-cd /app/src/main
+cd /github/workspace/app/src/main
 pwd
 ls
 echo "[*] -------------------------------------------------"
