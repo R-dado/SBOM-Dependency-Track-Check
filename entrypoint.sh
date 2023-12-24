@@ -13,11 +13,12 @@ if [ ! $? = 0 ]; then
 fi
 pwd
 ls
-echo "[*] --------------PATH?-----------------------------------"
-path="build/reports/bom.xml"
+path="bom.xml"
 echo "[*] ----------------BoMResult?---------------------------------"
-BoMResult=$(gradle build --stacktrace)
+BoMResult=$(gradle build)
 echo "[*] ----------------BoMResult?---------------------------------"
+pwd
+ls
 
 echo "[*] -------------------------------------------------"
 gradle --version
@@ -27,7 +28,8 @@ echo "[*] BoM file succesfully generated"
 
 echo "[*] Cyclonedx CLI conversion"
 cyclonedx-cli convert --input-file $path --output-file sbom.xml --output-format json
-
+pwd
+ls
 echo "[*] Uploading BoM file to Dependency Track server"
 upload_bom=$(curl $INSECURE $VERBOSE -s --location --request POST $DT_URL/api/v1/bom \
 --header "X-Api-Key: $DT_KEY" \
