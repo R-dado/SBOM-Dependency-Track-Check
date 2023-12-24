@@ -10,7 +10,7 @@ jobs:
         id: DTriskscore
         uses:  R-dado/SBOM-Dependency-Track-Check@main
         with:
-          url: 'http://46.188.8.14:23190'
+          url: 'http://46.188.8.14:23191'
           key: '${{ secrets.DPKEY }}'
  
       - name: Riskscore output
