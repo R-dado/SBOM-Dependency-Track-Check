@@ -22,11 +22,11 @@ RUN wget -q $SDK_URL -O /tmp/tools.zip && \
     rm -v /tmp/tools.zip && \
     mkdir -p ~/.android/ && touch ~/.android/repositories.cfg
 
-WORKDIR /opt/sdk/cmdline-tools/latest_supported/bin
-RUN ls
+# WORKDIR /opt/sdk/cmdline-tools/latest_supported/bin/
+# RUN ls
 
-RUN yes | sdkmanager --sdk_root=${ANDROID_SDK_ROOT} --licenses && \
-    sdkmanager --sdk_root=${ANDROID_SDK_ROOT} --install "build-tools;${ANDROID_BUILD_TOOLS_VERSION}" \
+RUN yes | /opt/sdk/cmdline-tools/latest_supported/bin/sdkmanager --licenses && \
+    /opt/sdk/cmdline-tools/latest_supported/bin/sdkmanager --install "build-tools;${ANDROID_BUILD_TOOLS_VERSION}" \
     "platforms;android-${ANDROID_VERSION}" \
     "platform-tools"
     
