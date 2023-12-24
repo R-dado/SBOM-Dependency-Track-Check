@@ -57,7 +57,7 @@ upload_bom=$(curl $INSECURE $VERBOSE -s --location --request "POST" "$DT_URL/api
 --form "autoCreate=true" \
 --form "projectName=$GITHUB_REPOSITORY" \
 --form "projectVersion=$GITHUB_REF" \
---form "bom=@sbom.xml")
+--form "bom=@bom.json")
 echo "[*] -------------------------------------------------"
 echo $upload_bom
 echo "[*] -------------------------------------------------"
