@@ -40,7 +40,10 @@ upload_bom=$(curl "$INSECURE" "$VERBOSE" -s --location --request POST "$DT_URL/a
 --form "projectName=$GITHUB_REPOSITORY" \
 --form "projectVersion=$GITHUB_REF" \
 --form "bom=@sbom.xml")
-echo "[*] -----------------??--------------------------------"
+echo "[*] -------------------------------------------------"
+echo $upload_bom
+echo "[*] -------------------------------------------------"
+
 # upload_bom=$(curl $INSECURE $VERBOSE -s --location --request POST $DT_URL/api/v1/bom \
 # --header "X-Api-Key: $DT_KEY" \
 # --header "Content-Type: multipart/form-data" \
@@ -48,6 +51,7 @@ echo "[*] -----------------??--------------------------------"
 # --form "projectName=$GITHUB_REPOSITORY" \
 # --form "projectVersion=$GITHUB_REF" \
 # --form "bom=@sbom.xml")
+
 
 token=$(echo $upload_bom | jq ".token" | tr -d "\"")
 echo "[*] BoM file succesfully uploaded with token $token"
