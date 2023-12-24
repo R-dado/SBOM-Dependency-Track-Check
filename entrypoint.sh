@@ -42,7 +42,7 @@ pwd
 ls
 echo "[*] --------------------after CLI-----------------------------"
 echo "[*] ----------------------sbom.json---------------------------"
-cat /github/workspace/app/build/reports/sbom.json
+cat /github/workspace/app/build/reports/sbom.xml
 echo "[*] ----------------------sbom.json---------------------------"
 echo "[*] --------------------after CLI-----------------------------"
 
