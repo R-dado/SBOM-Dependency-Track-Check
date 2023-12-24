@@ -33,13 +33,20 @@ echo "[*] Cyclonedx CLI conversion"
 cyclonedx-cli convert --input-file $path --output-file sbom.xml --output-format json
 
 echo "[*] Uploading BoM file to Dependency Track server"
-upload_bom=$(curl $INSECURE $VERBOSE -s --location --request POST $DT_URL/api/v1/bom \
+upload_bom=$(curl "$INSECURE" "$VERBOSE" -s --location --request POST "$DT_URL/api/v1/bom" \
 --header "X-Api-Key: $DT_KEY" \
 --header "Content-Type: multipart/form-data" \
 --form "autoCreate=true" \
 --form "projectName=$GITHUB_REPOSITORY" \
 --form "projectVersion=$GITHUB_REF" \
 --form "bom=@sbom.xml")
+# upload_bom=$(curl $INSECURE $VERBOSE -s --location --request POST $DT_URL/api/v1/bom \
+# --header "X-Api-Key: $DT_KEY" \
+# --header "Content-Type: multipart/form-data" \
+# --form "autoCreate=true" \
+# --form "projectName=$GITHUB_REPOSITORY" \
+# --form "projectVersion=$GITHUB_REF" \
+# --form "bom=@sbom.xml")
 
 token=$(echo $upload_bom | jq ".token" | tr -d "\"")
 echo "[*] BoM file succesfully uploaded with token $token"
