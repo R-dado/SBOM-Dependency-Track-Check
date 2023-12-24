@@ -17,9 +17,25 @@ path="bom.xml"
 echo "[*] ----------------BoMResult?---------------------------------"
 BoMResult=$(gradle build)
 echo "[*] ----------------BoMResult?---------------------------------"
+cd /github
 pwd
 ls
-
+echo "[*] -------------------------------------------------"
+cd /github/workspace
+pwd
+ls
+echo "[*] -------------------------------------------------"
+cd /app
+pwd
+ls
+echo "[*] -------------------------------------------------"
+cd /app/src
+pwd
+ls
+echo "[*] -------------------------------------------------"
+cd /app/src/main
+pwd
+ls
 echo "[*] -------------------------------------------------"
 gradle --version
 echo "[*] -------------------------------------------------"
@@ -28,8 +44,7 @@ echo "[*] BoM file succesfully generated"
 
 echo "[*] Cyclonedx CLI conversion"
 cyclonedx-cli convert --input-file $path --output-file sbom.xml --output-format json
-pwd
-ls
+
 echo "[*] Uploading BoM file to Dependency Track server"
 upload_bom=$(curl $INSECURE $VERBOSE -s --location --request POST $DT_URL/api/v1/bom \
 --header "X-Api-Key: $DT_KEY" \
