@@ -22,7 +22,7 @@ RUN wget -q $SDK_URL -O /tmp/tools.zip && \
     rm -v /tmp/tools.zip && \
     mkdir -p ~/.android/ && touch ~/.android/repositories.cfg
 
-WORKDIR /opt/sdk
+WORKDIR /opt/sdk/cmdline-tools
 RUN ls
 
 RUN yes | sdkmanager --sdk_root=${ANDROID_SDK_ROOT} --licenses && \
