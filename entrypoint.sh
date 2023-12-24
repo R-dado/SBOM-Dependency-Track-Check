@@ -41,12 +41,10 @@ cd /github/workspace/app/build/reports
 pwd
 ls
 echo "[*] --------------------after CLI-----------------------------"
-echo "[*] ----------------------bom.xml---------------------------"
-cat /github/workspace/app/build/reports/bom.xml
-echo "[*] ----------------------bom.xml---------------------------"
-echo "[*] ----------------------bom.json---------------------------"
-cat /github/workspace/app/build/reports/bom.json
-echo "[*] ----------------------bom.json---------------------------"
+echo "[*] ----------------------sbom.json---------------------------"
+cat /github/workspace/app/build/reports/sbom.json
+echo "[*] ----------------------sbom.json---------------------------"
+echo "[*] --------------------after CLI-----------------------------"
 
 echo "[*] --------------------ver-----------------------------"
 curl -X "GET" $DT_URL/api/version
