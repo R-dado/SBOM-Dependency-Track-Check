@@ -3,6 +3,7 @@ DT_KEY=$2
 
 
 INSECURE="--insecure"
+VERBOSE="--verbose"
 cd $GITHUB_WORKSPACE
 
 
@@ -36,7 +37,7 @@ curl -X "GET" $DT_URL/api/version
 echo "[*] --------------------ver-----------------------------"
 
 echo "[*] Uploading BoM file to Dependency Track server"
-upload_bom=$(curl "$INSECURE" "$VERBOSE" -s --location --request POST "$DT_URL/api/v1/bom" \
+upload_bom=$(curl "$INSECURE" "$VERBOSE" -s --location --request "POST" "$DT_URL/api/v1/bom" \
 --header "X-Api-Key: $DT_KEY" \
 --header "Content-Type: multipart/form-data" \
 --form "autoCreate=true" \
