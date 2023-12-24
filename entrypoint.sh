@@ -6,7 +6,7 @@ INSECURE="--insecure"
 cd $GITHUB_WORKSPACE
 
 echo "[*] -------------------------------------------------"
-${ANDROID_HOME}/tools/bin/sdkmanager --list
+/opt/sdk/cmdline-tools/latest_supported/bin/sdkmanager --list
 echo "[*] -------------------------------------------------"
 
 echo "[*]  Processing Java BoM"
@@ -15,6 +15,13 @@ if [ ! $? = 0 ]; then
     exit 1
 fi
 
+echo "[*] -------------------------------------------------"
+/opt/sdk/cmdline-tools/latest_supported/bin/sdkmanager --list
+echo "[*] -------------------------------------------------"
+ls
+cd
+ls
+echo "[*] -------------------------------------------------"
 path="build/reports/bom.xml"
 BoMResult=$(gradle build --stacktrace)
 
