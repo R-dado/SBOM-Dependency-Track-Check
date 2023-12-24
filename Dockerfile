@@ -27,7 +27,7 @@ RUN wget -q $SDK_URL -O /tmp/tools.zip && \
 
 RUN yes | /opt/sdk/cmdline-tools/latest_supported/bin/sdkmanager --licenses && \
     /opt/sdk/cmdline-tools/latest_supported/bin/sdkmanager --install "build-tools;${ANDROID_BUILD_TOOLS_VERSION}" \
-    "platforms;android-${ANDROID_VERSION}" \
+    "platforms;android-33" \
     "platform-tools"
     
 COPY cyclonedx-linux-x64 /usr/bin/cyclonedx-cli
