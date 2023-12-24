@@ -19,10 +19,9 @@ BoMResult=$(gradle build)
 echo "[*] ----------------BoMResult?---------------------------------"
 
 echo "[*] -------------------------------------------------"
-cd /github/workspace/app/build
+cd /github/workspace/app/build/reports
 pwd
 ls
-echo "[*] -------------------------------------------------"
 
 echo "[*] -------------------------------------------------"
 gradle --version
