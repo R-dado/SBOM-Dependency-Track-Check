@@ -5,26 +5,19 @@ DT_KEY=$2
 INSECURE="--insecure"
 cd $GITHUB_WORKSPACE
 
-echo "[*] -------------------------------------------------"
-/opt/sdk/cmdline-tools/latest_supported/bin/sdkmanager --list
-echo "[*] -------------------------------------------------"
 
 echo "[*]  Processing Java BoM"
 if [ ! $? = 0 ]; then
     echo "[-] Error executing Java build. Stopping the action!"
     exit 1
 fi
-
-echo "[*] -------------------------------------------------"
-/opt/sdk/cmdline-tools/latest_supported/bin/sdkmanager --list
-echo "[*] -------------------------------------------------"
+pwd
 ls
-cd
-ls
-echo "[*] -------------------------------------------------"
+echo "[*] --------------PATH?-----------------------------------"
 path="build/reports/bom.xml"
+echo "[*] ----------------BoMResult?---------------------------------"
 BoMResult=$(gradle build --stacktrace)
-
+echo "[*] ----------------BoMResult?---------------------------------"
 
 echo "[*] -------------------------------------------------"
 gradle --version
