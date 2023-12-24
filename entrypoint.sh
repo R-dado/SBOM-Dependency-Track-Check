@@ -32,11 +32,11 @@ echo "[*] Cyclonedx CLI conversion"
 cyclonedx-cli convert --input-file $path --output-file sbom.xml --output-format json
 
 echo "[*] --------------------ver-----------------------------"
-curl -X "GET" http://46.188.8.14:23191/api/version
+curl -X "GET" $DT_URL/api/version
 echo "[*] --------------------ver-----------------------------"
 
 echo "[*] Uploading BoM file to Dependency Track server"
-upload_bom=$(curl "$INSECURE" "$VERBOSE" -s --location --request POST "$DT_KEY/api/v1/bom" \
+upload_bom=$(curl "$INSECURE" "$VERBOSE" -s --location --request POST "$DT_URL/api/v1/bom" \
 --header "X-Api-Key: $DT_KEY" \
 --header "Content-Type: multipart/form-data" \
 --form "autoCreate=true" \
