@@ -13,38 +13,38 @@ if [ ! $? = 0 ]; then
     exit 1
 fi
 
-path="bom.xml"
+path="bom.json"
 echo "[*] ----------------BoMResult?---------------------------------"
 BoMResult=$(gradle build)
 echo "[*] ----------------BoMResult?---------------------------------"
 
-echo "[*] -------------------------------------------------"
-cd /github/workspace/app/build/reports
-pwd
-ls
+# echo "[*] -------------------------------------------------"
+# cd /github/workspace/app/build/reports
+# pwd
+# ls
 
-echo "[*] ----------------------bom.xml---------------------------"
-cat /github/workspace/app/build/reports/bom.xml
-echo "[*] ----------------------bom.xml---------------------------"
+# echo "[*] ----------------------bom.xml---------------------------"
+# cat /github/workspace/app/build/reports/bom.xml
+# echo "[*] ----------------------bom.xml---------------------------"
 echo "[*] ----------------------bom.json---------------------------"
 cat /github/workspace/app/build/reports/bom.json
 echo "[*] ----------------------bom.json---------------------------"
-gradle --version
-echo "[*] -------------------------------------------------"
+# gradle --version
+# echo "[*] -------------------------------------------------"
 
 echo "[*] BoM file succesfully generated"
 
-echo "[*] Cyclonedx CLI conversion"
-cyclonedx-cli convert --input-file $path --output-file sbom.xml --output-format json
-echo "[*] --------------------after CLI-----------------------------"
-cd /github/workspace/app/build/reports
-pwd
-ls
-echo "[*] --------------------after CLI-----------------------------"
-echo "[*] ----------------------sbom.json---------------------------"
-cat /github/workspace/app/build/reports/sbom.xml
-echo "[*] ----------------------sbom.json---------------------------"
-echo "[*] --------------------after CLI-----------------------------"
+# echo "[*] Cyclonedx CLI conversion"
+# cyclonedx-cli convert --input-file $path --output-file sbom.xml --output-format json
+# echo "[*] --------------------after CLI-----------------------------"
+# cd /github/workspace/app/build/reports
+# pwd
+# ls
+# echo "[*] --------------------after CLI-----------------------------"
+# echo "[*] ----------------------sbom.json---------------------------"
+# cat /github/workspace/app/build/reports/sbom.xml
+# echo "[*] ----------------------sbom.json---------------------------"
+# echo "[*] --------------------after CLI-----------------------------"
 
 echo "[*] --------------------ver-----------------------------"
 curl -X "GET" $DT_URL/api/version
