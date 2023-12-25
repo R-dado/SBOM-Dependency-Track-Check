@@ -49,7 +49,10 @@ echo "[*] BoM file succesfully generated"
 echo "[*] --------------------ver-----------------------------"
 curl -X "GET" $DT_URL/api/version
 echo "[*] --------------------ver-----------------------------"
-
+echo "[*] ---------------------catalog----------------------------"
+pwd
+ls
+echo "[*] ---------------------catalog----------------------------"
 echo "[*] Uploading BoM file to Dependency Track server"
 upload_bom=$(curl $INSECURE $VERBOSE -s --location --request "POST" "$DT_URL/api/v1/bom" \
 --header "X-Api-Key: $DT_KEY" \
